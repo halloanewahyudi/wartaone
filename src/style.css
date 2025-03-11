@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #285943;
+  --color-secondary: #387c5d;
+  --color-tertiary: #8cd790;
+  --color-light: #d7fff1;
+
+  --vdp-selected-bg-color: var(--color-secondary);
+
+}
+.v3dp__input_wrapper{
+  position: relative;
+}
+.v3dp__clearable {
+  display: inline;
+  left: auto !important;
+  cursor: pointer;
+  position: absolute !important;
+  right: 10px;
+  top: 10px;
+  
+}
+
+@layer base {
+  body {
+    @apply bg-primary text-light;
+  }
+  .container{
+    @apply mx-auto px-6 lg:px-8 xl:px-10 2xl:px-12;
+  }
+  .input {
+    @apply w-full rounded-lg border border-light/30 bg-white/10 py-2.5 px-5 font-medium  focus:border-primary focus:ring-2 focus:ring-secondary focus:outline-none focus:ring-offset-2 focus:ring-offset-primary;
+  }
+  .btn{
+    @apply py-2 px-5 rounded-full bg-secondary text-light font-medium inline-block hover:ring-2 hover:ring-offset-2 hover:ring-offset-primary hover:ring-secondary hover:bg-secondary/80 cursor-pointer;
+  }
+
+  .v3dp__clearable i{
+    @apply p-2 font-normal ;
+  }
+  .v3dp__clearable::after{
+    content:'✕',
+    @apply w-10 h-10 block;
+  }
+
+}
+
+input:disabled {
+  background-color: #037459 !important ;
+ }
