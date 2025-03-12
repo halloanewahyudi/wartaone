@@ -50,7 +50,7 @@
     </div>
 </template>
 
-<script lang="ts" setup>
+<script  setup>
 import { ref, computed, onMounted } from "vue";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
@@ -66,7 +66,7 @@ const searchQuery = ref("");
 const itemsPerPage = 10;
 const currentPage = ref(1);
 
-const formatTanggal = (tanggal: any) => {
+const formatTanggal = (tanggal) => {
     if (!tanggal) return "Tanggal tidak tersedia";
 
     let parsedDate;
@@ -100,13 +100,22 @@ const fetchData = async () => {
 
 // Filter berdasarkan searchQuery
 const filteredPemudikList = computed(() => {
-    if (!searchQuery.value) return pemudikList.value;
-    return pemudikList.value.filter(
-        (pemudik) =>
-            pemudik.nama.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-            pemudik.tujuan.toLowerCase().includes(searchQuery.value.toLowerCase())
+  if (!searchQuery.value) return pemudikList.value;
+
+  return pemudikList.value.filter((pemudik) => {
+    const berangkatStr = formatTanggal(pemudik.berangkat);
+    const pulangStr = formatTanggal(pemudik.pulang);
+    const query = searchQuery.value.toLowerCase();
+
+    return (
+      pemudik.nama.toLowerCase().includes(query) ||
+      pemudik.tujuan.toLowerCase().includes(query) ||
+      berangkatStr.toLowerCase().includes(query) ||
+      pulangStr.toLowerCase().includes(query)
     );
+  });
 });
+
 
 // Hitung total halaman
 const totalPages = computed(() => Math.ceil(filteredPemudikList.value.length / itemsPerPage));

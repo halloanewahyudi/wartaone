@@ -74,12 +74,10 @@
             </button>
 
         </form>
-
-        <pre>{{ data }}</pre>
     </div>
 </template>
 
-<script lang="ts" setup>
+<script  setup>
 import { ref } from 'vue';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
