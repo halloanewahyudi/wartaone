@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
  import formMudik from '../components/form.vue';
 
 </script>
