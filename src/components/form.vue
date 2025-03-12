@@ -23,12 +23,12 @@
             </div>
 
             <div>
-                <p>Tinggal Blok Mana?</p>
+                <p>Tinggal di blok mana?</p>
                 <div class="flex items-center rounded-lg overflow-hidden w-full border border-light/30 bg-primary-light mt-2">
                     <div class="w-full border-r border-light/30 cursor-pointer">
                         <input id="blokA" type="radio" v-model="data.alamat.blok" value="A" class="hidden">
                         <label @click="bukaBlok = true" for="blokA"
-                            class="font-medium block p-2.5 text-center"
+                            class="font-medium block p-2.5 text-center cursor-pointer hover:bg-tertiary/80 duration-300 "
                             :class="data.alamat.blok == 'A' ? 'bg-gradient-to-t from-tertiary to-tertiary/80 text-light' : ''">
                             Blok A
                         </label>
@@ -36,12 +36,13 @@
                     <div class="w-full cursor-pointer">
                         <input id="blokB" type="radio" v-model="data.alamat.blok" value="B" class="hidden">
                         <label @click="bukaBlok = true" for="blokB"
-                            class="font-medium block p-2.5 text-center"
+                            class="font-medium block p-2.5 text-center cursor-pointer hover:bg-tertiary/80 duration-300 "
                             :class="data.alamat.blok == 'B' ? 'bg-gradient-to-t from-tertiary to-tertiary/80 text-light' : ''">
                             Blok B
                         </label>
                     </div>
                 </div>
+                <i class="text-sm text-tertiary">Silakan pilih blok A/B</i>
             </div>
 
             <Transition>
