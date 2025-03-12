@@ -80,7 +80,7 @@
 
 <script  setup>
 import { ref } from 'vue';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase';
 import Datepicker from 'vue3-datepicker';
 import { useRoute, useRouter } from 'vue-router';
