@@ -23,6 +23,7 @@ const fetchData = async () => {
 const downloadCSV = () => {
   const csvData = pemudikList.value.map(pemudik => ({
     Nama: pemudik.nama,
+    Alamat:pemudik.alamat.blok + " " + pemudik.alamat.no_blok+ "/ " + pemudik.alamat.no_rumah,
     Tujuan: pemudik.tujuan,
     Berangkat: pemudik.berangkat && pemudik.berangkat.seconds
       ? new Date(pemudik.berangkat.seconds * 1000).toLocaleDateString('id-ID')
@@ -42,6 +43,7 @@ const downloadCSV = () => {
 const downloadExcel = () => {
   const ws = XLSX.utils.json_to_sheet(pemudikList.value.map(pemudik => ({
     Nama: pemudik.nama,
+    Alamat:pemudik.alamat.blok + " " + pemudik.alamat.no_blok+ "/ " + pemudik.alamat.no_rumah,
     Tujuan: pemudik.tujuan,
     Berangkat: pemudik.berangkat && pemudik.berangkat.seconds
       ? new Date(pemudik.berangkat.seconds * 1000).toLocaleDateString('id-ID')
